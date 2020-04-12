@@ -30,29 +30,41 @@ public class TestAddStudent {
         this.temaRepo = new TemaXMLRepository(temaValidator, "teme.xml");
         this.noteRepo = new NotaXMLRepository(notaValidator, "note.xml");
 
-        this.service = new Service(studRepo, temaRepo, noteRepo); }
+        this.service = new Service(studRepo, temaRepo, noteRepo);
+    }
 
     @Before
-    public void setup() { this.service = new Service(studRepo, temaRepo, noteRepo); }
+    public void setup() {
+        this.service = new Service(studRepo, temaRepo, noteRepo);
+    }
 
     @Test
-    public void testSuccesAddStudent(){
+    public void testSuccesAddStudent() {
 
         try {
             int ret = service.saveStudent("5", "succesful", 200);
-            assert ret==1;
-            int ret2 = service.saveStudent("6", "succesfulAgain", 300);
-            assert ret==1;
-        }
-        catch (ValidationException vex)
-        {
+            assert ret == 1;
+            ret = service.saveStudent("6", "succesfulAgain", 300);
+            assert ret == 1;
+        } catch (ValidationException vex) {
             assert false;
         }
     }
 
 
     @Test
-    public void testFailAddStudent(){
-
+    public void testFailAddStudent() {
+        try{
+            int ret = service.saveStudent("", "id is empty string", 300);
+            assert ret==1;
+        } catch(ValidationException e){
+            assert true;
+        }
+        try{
+            int ret = service.saveStudent(null, "id is null", 400);
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
     }
 }
