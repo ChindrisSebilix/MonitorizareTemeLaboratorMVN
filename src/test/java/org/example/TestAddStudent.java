@@ -146,8 +146,15 @@ public class TestAddStudent {
         } catch (ValidationException e) {
             assert true;
         }
+    }
+    @Test
+    public void TestSuccesAddAssignment(){
 
     }
 
+    @Test
+    public void TestSuccesAddAssignment(){
+
+    }
 
 }
