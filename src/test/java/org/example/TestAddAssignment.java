@@ -11,8 +11,7 @@ import org.example.validation.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
-public class TestAddStudent {
+public class TestAddAssignment {
 
     private Validator<Student> studentValidator;
     private Validator<Tema> temaValidator;
@@ -24,7 +23,7 @@ public class TestAddStudent {
 
     private Service service;
 
-    public TestAddStudent() {
+    public TestAddAssignment() {
         this.studentValidator = new StudentValidator();
         this.temaValidator = new TemaValidator();
         this.notaValidator = new NotaValidator();
@@ -42,96 +41,80 @@ public class TestAddStudent {
     }
 
     @Test
-    public void testSuccesAddStudent() {
-
+    public void TestSuccesAddAssignment(){
         try {
-            int ret = service.saveStudent("5", "succesful", 200);
-            assert ret == 1;
-            int ret2 = service.saveStudent("6", "succesful2", 300);
-            assert ret2 == 1;
-        } catch (ValidationException vex) {
-            assert false;
-        }
-
-        //BVA
-        try {
-            service.saveStudent("20", "success", 111);
-            assert true;
+            service.saveTema("6", "hw", 5, 3);
         } catch (ValidationException e) {
-            assert false;
-        }
-        try {
-            service.saveStudent("21", "success", 937);
             assert true;
-        } catch (ValidationException e) {
-            assert false;
         }
     }
 
-
     @Test
-    public void testFailAddStudent() {
-        /*
-        try{
-            int ret = service.saveStudent(1, "id is not string", 400);
-        } catch (ValidationException e){
-            assert true;
+    public void TestFailAddAssignment(){
+        try {
+            service.saveTema("", "hw", 5, 3);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("ID invalid! \n");
         }
-        try{
-            int ret = service.saveStudent("10", 200, 400); // name not string
-        } catch (ValidationException e){
-            assert true;
+        try {
+            service.saveTema("0", "", 5, 3);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Descriere invalida! \n");
+        }
+        try {
+            service.saveTema("1", "hw", 1, 9);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Deadline invalid! \n");
+        }
+        try {
+            service.saveTema("2", "hw", 1, 9);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Deadline invalid! \n");
+        }
+        int ret = service.saveTema("0", "hw", 5, 3);
+        assert ret==0; // an entry with id 0 is already there
+        try {
+            service.saveTema(null, "hw", 5, 3);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("ID invalid! \n");
+        }
+        try {
+            service.saveTema("7", null, 5, 3);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Descriere invalida! \n");
+        }
+        try {
+            service.saveTema("8", "hw", 21, 9);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Deadline invalid! \n");
+        }
+        try {
+            service.saveTema("9", "hw", 0, 9);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Deadline invalid! \n");
+        }
+        try {
+            service.saveTema("10", "hw", 9, 21);
+        } catch (ValidationException e) {
+            assert e.getMessage().equals("Deadline invalid! \n");//startline invalid
+        }
+        /*
+        try {
+            service.saveTema("3", "hw", 5, 3);
+        } catch (ValidationException e) {
+            assert false;
+        }
+                try {
+            service.saveTema("4", "hw", 5, 3);
+        } catch (ValidationException e) {
+            assert false;
+        }
+                try {
+            service.saveTema("5", "hw", 5, 3);
+        } catch (ValidationException e) {
+            assert false;
         }
         */
-        try {
-            service.saveStudent("", "id is empty string", 300);
-
-        } catch (ValidationException e) {
-            assert true;
-        }
-        try {
-            service.saveStudent(null, "id is null", 400);
-
-        } catch (ValidationException e) {
-            assert true;
-        }
-
-        try {
-            service.saveStudent("7", "", 500);
-
-        } catch (ValidationException e) {
-            assert true;
-        }
-        try {
-            service.saveStudent("8", null, 600);
-
-        } catch (ValidationException e) {
-            assert true;
-        }
-//        try {
-//            service.saveStudent("13", "fail", 300.0);
-//        } catch (Exception e) {
-//            assert true;
-//        }
-        try {
-            service.saveStudent("14", "fail", 110);
-        } catch (ValidationException e) {
-            assert true;
-        }
-
-
-        try {
-            service.saveStudent("16", "fail", 938);
-        } catch (ValidationException e) {
-            assert true;
-        }
-
-        try {
-            service.saveStudent("17", "fail", -2);
-
-        } catch (ValidationException e) {
-            assert true;
-        }
     }
 
 }
