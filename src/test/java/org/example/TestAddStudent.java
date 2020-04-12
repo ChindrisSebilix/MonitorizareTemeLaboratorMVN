@@ -40,9 +40,9 @@ public class TestAddStudent {
 
         try {
             int ret = service.saveStudent("5", "succesful", 200);
-            assert ret==0;
-            int ret2 = service.saveStudent("6", "succesful2", 300);
-            assert ret2==0;
+            assert ret==1;
+            int ret2 = service.saveStudent("6", "succesfulAgain", 300);
+            assert ret==1;
         }
         catch (ValidationException vex)
         {
@@ -50,9 +50,9 @@ public class TestAddStudent {
         }
     }
 
-    /*
+
     @Test
     public void testFailAddStudent(){
 
-    }*/
+    }
 }
