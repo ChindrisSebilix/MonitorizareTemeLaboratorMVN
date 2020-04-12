@@ -72,7 +72,45 @@ public class TestAddStudent {
 
     @Test
     public void testFailAddStudent() {
+        /*
+        try{
+            int ret = service.saveStudent(1, "id is not string", 400);
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+        try{
+            int ret = service.saveStudent("10", 200, 400); // name not string
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+        */
+        try {
+            int ret = service.saveStudent("", "id is empty string", 300);
+            assert ret == 1;
+        } catch (ValidationException e) {
+            assert true;
+        }
+        try {
+            int ret = service.saveStudent(null, "id is null", 400);
+            assert ret == 1;
+        } catch (ValidationException e) {
+            assert true;
+        }
 
+        try {
+            int ret = service.saveStudent("7", "", 500);
+            assert ret == 1;
+        } catch (ValidationException e) {
+            assert true;
+        }
+        try {
+            int ret = service.saveStudent("8", null, 600);
+            assert ret == 1;
+        } catch (ValidationException e) {
+            assert true;
+        }
         try {
             int ret = service.saveStudent("11", "", 200);
         } catch (ValidationException e) {
@@ -113,17 +151,7 @@ public class TestAddStudent {
             assert true;
         }
 
-
     }
 
-//    @After
-//        public void tearDown() {
-//            Iterator<Student> it = studRepo.findAll().iterator();
-//            while (it.hasNext()) {
-//                Student aux = it.next();
-//                it.remove();
-//                it = aux;
-//            }
-//
-//    }
+
 }
