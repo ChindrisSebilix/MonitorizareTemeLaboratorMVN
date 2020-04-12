@@ -147,14 +147,5 @@ public class TestAddStudent {
             assert true;
         }
     }
-    @Test
-    public void TestSuccesAddAssignment(){
-
-    }
-
-    @Test
-    public void TestSuccesAddAssignment(){
-
-    }
 
 }
