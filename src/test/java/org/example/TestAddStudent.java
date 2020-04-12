@@ -111,11 +111,7 @@ public class TestAddStudent {
         } catch (ValidationException e) {
             assert true;
         }
-        try {
-            int ret = service.saveStudent("11", "", 200);
-        } catch (ValidationException e) {
-            assert true;
-        }
+
         try {
             service.saveStudent("12", null, 300);
             assert false;
