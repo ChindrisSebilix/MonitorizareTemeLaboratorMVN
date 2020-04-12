@@ -3,15 +3,14 @@ package org.example;
 import org.example.domain.Nota;
 import org.example.domain.Student;
 import org.example.domain.Tema;
-import org.example.repository.*;
+import org.example.repository.NotaXMLRepository;
+import org.example.repository.StudentXMLRepository;
+import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
 import org.example.validation.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Iterator;
-import java.util.List;
 
 public class TestAddStudent {
 
@@ -62,7 +61,7 @@ public class TestAddStudent {
             assert false;
         }
         try {
-            service.saveStudent("21", "fail", 937);
+            service.saveStudent("21", "success", 937);
             assert true;
         } catch (ValidationException e) {
             assert false;
@@ -75,59 +74,47 @@ public class TestAddStudent {
         /*
         try{
             int ret = service.saveStudent(1, "id is not string", 400);
-            assert ret==1;
         } catch (ValidationException e){
             assert true;
         }
         try{
             int ret = service.saveStudent("10", 200, 400); // name not string
-            assert ret==1;
         } catch (ValidationException e){
             assert true;
         }
         */
         try {
-            int ret = service.saveStudent("", "id is empty string", 300);
-            assert ret == 1;
+            service.saveStudent("", "id is empty string", 300);
+
         } catch (ValidationException e) {
             assert true;
         }
         try {
-            int ret = service.saveStudent(null, "id is null", 400);
-            assert ret == 1;
+            service.saveStudent(null, "id is null", 400);
+
         } catch (ValidationException e) {
             assert true;
         }
 
         try {
-            int ret = service.saveStudent("7", "", 500);
-            assert ret == 1;
+            service.saveStudent("7", "", 500);
+
         } catch (ValidationException e) {
             assert true;
         }
         try {
-            int ret = service.saveStudent("8", null, 600);
-            assert ret == 1;
+            service.saveStudent("8", null, 600);
+
         } catch (ValidationException e) {
             assert true;
-        }
-
-        try {
-            service.saveStudent("12", null, 300);
-            assert false;
-        } catch (ValidationException e) {
-            assert true;
-
         }
 //        try {
 //            service.saveStudent("13", "fail", 300.0);
-//            assert false;
 //        } catch (Exception e) {
 //            assert true;
 //        }
         try {
             service.saveStudent("14", "fail", 110);
-            assert false;
         } catch (ValidationException e) {
             assert true;
         }
@@ -135,14 +122,13 @@ public class TestAddStudent {
 
         try {
             service.saveStudent("16", "fail", 938);
-            assert false;
         } catch (ValidationException e) {
             assert true;
         }
 
         try {
             service.saveStudent("17", "fail", -2);
-            assert false;
+
         } catch (ValidationException e) {
             assert true;
         }
