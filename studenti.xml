@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Studenti>
-    <student ID="1">
-        <Nume>Ana</Nume>
-        <Grupa>221</Grupa>
+<Entitati>
+    <student ID="5">
+        <Nume>succesful</Nume>
+        <Grupa>200</Grupa>
     </student>
-    <student ID="2">
-        <Nume>Maria</Nume>
-        <Grupa>222</Grupa>
+    <student ID="6">
+        <Nume>succesful2</Nume>
+        <Grupa>300</Grupa>
     </student>
-    <student ID="4">
-        <Nume>Ion</Nume>
-        <Grupa>227</Grupa>
+    <student ID="20">
+        <Nume>success</Nume>
+        <Grupa>111</Grupa>
     </student>
-</Studenti>
+    <student ID="21">
+        <Nume>fail</Nume>
+        <Grupa>937</Grupa>
+    </student>
+</Entitati>
