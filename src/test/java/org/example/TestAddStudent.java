@@ -54,10 +54,24 @@ public class TestAddStudent {
 
     @Test
     public void testFailAddStudent() {
+        /*
+        try{
+            int ret = service.saveStudent(1, "id is not string", 400);
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+        try{
+            int ret = service.saveStudent("10", 200, 400); // name not string
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+        */
         try{
             int ret = service.saveStudent("", "id is empty string", 300);
             assert ret==1;
-        } catch(ValidationException e){
+        } catch (ValidationException e){
             assert true;
         }
         try{
@@ -66,5 +80,19 @@ public class TestAddStudent {
         } catch (ValidationException e){
             assert true;
         }
+
+        try{
+            int ret = service.saveStudent("7", "", 500);
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+        try{
+            int ret = service.saveStudent("8", null, 600);
+            assert ret==1;
+        } catch (ValidationException e){
+            assert true;
+        }
+
     }
 }
