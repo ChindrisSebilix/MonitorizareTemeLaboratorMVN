@@ -33,14 +33,19 @@ public abstract class AbstractCRUDRepository<ID, E extends HasID<ID>> implements
 
     @Override
     public E save(E entity) throws ValidationException {
+        try{
         validator.validate(entity);
-        return entities.putIfAbsent(entity.getID(), entity);
+        return entities.putIfAbsent(entity.getID(), entity);}
+        catch (ValidationException e){
+            System.out.println("Entitatea nu este valida!");
+            return entity;
+        }
     }
 
     @Override
     public E delete(ID id) {
         if (id == null) {
-            throw new IllegalArgumentException("ID-ul nu poate fi nul! \n");
+            throw new IllegalArgumentException("ID-ul nu poate fi null! \n");
         } else {
             return entities.remove(id);
         }
