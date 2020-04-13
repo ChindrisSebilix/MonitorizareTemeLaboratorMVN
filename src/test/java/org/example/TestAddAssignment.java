@@ -145,7 +145,7 @@ public class TestAddAssignment {
     }
 
     @After
-    public void clearRepos(){
+    public void clearRepos() {
 
         temaRepo.clear();
     }

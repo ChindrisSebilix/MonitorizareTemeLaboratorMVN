@@ -138,7 +138,7 @@ public class TestAddStudent {
     }
 
     @After
-    public void clearRepos(){
+    public void clearRepos() {
         studRepo.clear();
     }
 
