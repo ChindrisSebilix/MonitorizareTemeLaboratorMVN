@@ -41,7 +41,7 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void TestSuccesAddAssignment() {
+    public void testSuccesAddAssignment() {
         try {
             int ret = service.saveTema("6", "hw", 5, 3);
             assert ret == 1;
@@ -51,7 +51,7 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void TestFailAddAssignment() {
+    public void testFailAddAssignment() {
         try {
             int ret = service.saveTema("", "hw", 5, 3);
             assert ret == 0;
