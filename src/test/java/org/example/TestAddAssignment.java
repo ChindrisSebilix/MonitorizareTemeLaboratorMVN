@@ -8,8 +8,11 @@ import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
 import org.example.validation.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.awt.event.ItemEvent;
 
 public class TestAddAssignment {
 
@@ -41,7 +44,7 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void TestSuccesAddAssignment() {
+    public void testSuccesAddAssignment() {
         try {
             int ret = service.saveTema("6", "hw", 5, 3);
             assert ret == 1;
@@ -51,7 +54,7 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void TestFailAddAssignment() {
+    public void testFailAddAssignment() {
         try {
             int ret = service.saveTema("", "hw", 5, 3);
             assert ret == 0;
@@ -141,4 +144,9 @@ public class TestAddAssignment {
         */
     }
 
+    @After
+    public void clearRepos(){
+
+        temaRepo.clear();
+    }
 }

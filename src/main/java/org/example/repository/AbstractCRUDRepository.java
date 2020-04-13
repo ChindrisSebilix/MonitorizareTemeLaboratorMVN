@@ -56,4 +56,8 @@ public abstract class AbstractCRUDRepository<ID, E extends HasID<ID>> implements
         validator.validate(entity);
         return entities.replace(entity.getID(), entity);
     }
+
+    public void clear(){
+        entities.clear();
+    }
 }
