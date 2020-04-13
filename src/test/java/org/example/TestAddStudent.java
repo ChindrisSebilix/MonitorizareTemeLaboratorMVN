@@ -42,7 +42,7 @@ public class TestAddStudent {
     }
 
     @Test
-    public void testSuccesAddStudent() {
+    public void TestSuccesAddStudent() {
 
         try {
             int ret = service.saveStudent("5", "succesful", 200);
@@ -70,7 +70,7 @@ public class TestAddStudent {
 
 
     @Test
-    public void testFailAddStudent() {
+    public void TestFailAddStudent() {
         /*
         try{
             int ret = service.saveStudent(1, "id is not string", 400);
