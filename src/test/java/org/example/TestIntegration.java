@@ -8,6 +8,7 @@ import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
 import org.example.validation.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,8 @@ public class TestIntegration {
     @Before
     public void setup() {
         this.service = new Service(studRepo, temaRepo, noteRepo);
+        service.saveStudent("1", "for", 345);
+        service.saveTema("6", "grade Test", 5, 3);
     }
 
     @Test
@@ -52,7 +55,7 @@ public class TestIntegration {
     }
 
     @Test
-    public void TestSuccesAddGrade() {
+    public void testSuccesAddGrade() {
         int ret = service.saveNota("1", "6", 10.0, 5, "excelent");
         assert ret == 1;
     }
@@ -65,4 +68,11 @@ public class TestIntegration {
         assert ret == 1;
     }
 
+    @After
+    public void clearRepos(){
+
+        studRepo.clear();
+        temaRepo.clear();
+        noteRepo.clear();
+    }
 }

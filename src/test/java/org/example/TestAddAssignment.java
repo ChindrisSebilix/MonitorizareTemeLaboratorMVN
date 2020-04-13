@@ -8,8 +8,11 @@ import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
 import org.example.validation.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.awt.event.ItemEvent;
 
 public class TestAddAssignment {
 
@@ -141,4 +144,9 @@ public class TestAddAssignment {
         */
     }
 
+    @After
+    public void clearRepos(){
+
+        temaRepo.clear();
+    }
 }

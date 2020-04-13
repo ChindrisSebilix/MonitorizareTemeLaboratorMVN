@@ -8,6 +8,7 @@ import org.example.repository.StudentXMLRepository;
 import org.example.repository.TemaXMLRepository;
 import org.example.service.Service;
 import org.example.validation.*;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -134,6 +135,11 @@ public class TestAddStudent {
         } catch (ValidationException e) {
             assert true;
         }
+    }
+
+    @After
+    public void clearRepos(){
+        studRepo.clear();
     }
 
 }

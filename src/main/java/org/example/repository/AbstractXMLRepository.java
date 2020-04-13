@@ -109,4 +109,11 @@ public abstract class AbstractXMLRepository<ID, E extends HasID<ID>> extends Abs
 
         return result;
     }
+
+    @Override
+    public void clear() {
+
+        super.clear();
+        writeToXmlFile();
+    }
 }
