@@ -55,14 +55,14 @@ public class TestAddStudent {
 
         //BVA
         try {
-            service.saveStudent("20", "success", 111);
-            assert true;
+            int ret = service.saveStudent("20", "success", 111);
+            assert ret == 1;
         } catch (ValidationException e) {
             assert false;
         }
         try {
-            service.saveStudent("21", "success", 937);
-            assert true;
+            int ret = service.saveStudent("21", "success", 937);
+            assert ret == 1;
         } catch (ValidationException e) {
             assert false;
         }
@@ -84,27 +84,27 @@ public class TestAddStudent {
         }
         */
         try {
-            service.saveStudent("", "id is empty string", 300);
-
+            int ret = service.saveStudent("", "id is empty string", 300);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
         try {
-            service.saveStudent(null, "id is null", 400);
-
+            int ret = service.saveStudent(null, "id is null", 400);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
 
         try {
-            service.saveStudent("7", "", 500);
-
+            int ret = service.saveStudent("7", "", 500);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
         try {
-            service.saveStudent("8", null, 600);
-
+            int ret = service.saveStudent("8", null, 600);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
@@ -114,21 +114,23 @@ public class TestAddStudent {
 //            assert true;
 //        }
         try {
-            service.saveStudent("14", "fail", 110);
+            int ret = service.saveStudent("14", "fail", 110);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
 
 
         try {
-            service.saveStudent("16", "fail", 938);
+            int ret = service.saveStudent("16", "fail", 938);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }
 
         try {
-            service.saveStudent("17", "fail", -2);
-
+            int ret = service.saveStudent("17", "fail", -2);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert true;
         }

@@ -1,31 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Entitati>
-    <student ID="44">
-        <Nume>r</Nume>
-        <Grupa>111</Grupa>
-    </student>
-    <student ID="33">
-        <Nume>e</Nume>
-        <Grupa>134</Grupa>
-    </student>
-    <student ID="34">
-        <Nume>e</Nume>
-        <Grupa>123</Grupa>
-    </student>
-    <student ID="5">
-        <Nume>succesful</Nume>
-        <Grupa>200</Grupa>
-    </student>
-    <student ID="6">
-        <Nume>succesful2</Nume>
-        <Grupa>300</Grupa>
-    </student>
-    <student ID="20">
-        <Nume>success</Nume>
-        <Grupa>111</Grupa>
-    </student>
-    <student ID="21">
-        <Nume>1</Nume>
-        <Grupa>937</Grupa>
-    </student>
+
 </Entitati>

@@ -41,62 +41,86 @@ public class TestAddAssignment {
     }
 
     @Test
-    public void TestSuccesAddAssignment(){
+    public void TestSuccesAddAssignment() {
         try {
-            service.saveTema("6", "hw", 5, 3);
+            int ret = service.saveTema("6", "hw", 5, 3);
+            assert ret == 1;
         } catch (ValidationException e) {
             assert true;
         }
     }
 
     @Test
-    public void TestFailAddAssignment(){
+    public void TestFailAddAssignment() {
         try {
-            service.saveTema("", "hw", 5, 3);
+            int ret = service.saveTema("", "hw", 5, 3);
+            assert ret == 0;
         } catch (ValidationException e) {
             assert e.getMessage().equals("ID invalid! \n");
         }
+
         try {
-            service.saveTema("0", "", 5, 3);
+            int ret = service.saveTema("0", "", 5, 3);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Descriere invalida! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("1", "hw", 1, 9);
+            int ret = service.saveTema("1", "hw", 1, 9);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Deadline invalid! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("2", "hw", 1, 9);
+            int ret = service.saveTema("2", "hw", 1, 9);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Deadline invalid! \n");
+            assert true;
         }
-        int ret = service.saveTema("0", "hw", 5, 3);
-        assert ret==0; // an entry with id 0 is already there
+
         try {
-            service.saveTema(null, "hw", 5, 3);
+            service.saveTema("0", "hw", 5, 3);
+            int ret = service.saveTema("0", "hw", 5, 3);// an entry with id 0 is already there
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("ID invalid! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("7", null, 5, 3);
+            int ret = service.saveTema(null, "hw", 5, 3);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Descriere invalida! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("8", "hw", 21, 9);
+            int ret = service.saveTema("7", null, 5, 3);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Deadline invalid! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("9", "hw", 0, 9);
+            int ret = service.saveTema("8", "hw", 21, 9);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Deadline invalid! \n");
+            assert true;
         }
+
         try {
-            service.saveTema("10", "hw", 9, 21);
+            int ret = service.saveTema("9", "hw", 0, 9);
+            assert ret == 0;
         } catch (ValidationException e) {
-            assert e.getMessage().equals("Deadline invalid! \n");//startline invalid
+            assert true;
+        }
+
+        try {
+            int ret = service.saveTema("10", "hw", 9, 21);
+            assert ret == 0;
+        } catch (ValidationException e) {
+            assert true;//startline invalid
         }
         /*
         try {
