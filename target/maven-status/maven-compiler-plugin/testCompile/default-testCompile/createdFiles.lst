@@ -1,1 +1,5 @@
 org\example\AppTest.class
+org\example\TestAddStudent.class
+org\example\TestIntegration.class
+org\example\TestTopDown.class
+org\example\TestAddAssignment.class
